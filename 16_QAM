@@ -4,9 +4,11 @@
 #define DAC_PIN_I D13
 #define DAC_PIN_Q A2
 
-// Tableau des valeurs de tension (DAC) pour les composantes I et Q en fonction du symbole 16-PSK
-const uint16_t valeurs_I[16] = {3847, 3815, 3629, 3376, 3102, 2827, 2575, 2509, 2358, 2509, 2575, 2827, 3102, 3376, 3629, 3815}; // Valeurs en DAC pour I
-const uint16_t valeurs_Q[16] = {3102, 3376, 3629, 3815, 3847, 3815, 3629, 3376, 3102, 2827, 2575, 2386, 2358, 2386, 2575, 2827}; // Valeurs en DAC pour Q
+// Tableau des valeurs de tension (DAC) pour les composantes I et Q en fonction du symbole 16-QAM
+const uint16_t valeurs_I[16] = {2358, 2358, 2358, 2358, 2854, 2854, 2854, 2854, 
+                                3350, 3350, 3350, 3350, 3847, 3847, 3847, 3847}; // Valeurs en DAC pour I
+const uint16_t valeurs_Q[16] = {2358, 2854, 3350, 3847, 2358, 2854, 3350, 3847, 
+                                2358, 2854, 3350, 3847, 2358, 2854, 3350, 3847}; // Valeurs en DAC pour Q
 
 void setup() {
   // Configuration des broches DAC comme sorties
@@ -15,7 +17,7 @@ void setup() {
 }
 
 void loop() {
-  // Boucle continue pour générer chaque symbole en 16-PSK
+  // Boucle continue pour générer chaque symbole en 16-QAM
   for (uint8_t symbole = 0; symbole < 16; symbole++) {
     // Écriture des valeurs sur les DAC pour les composantes I et Q
     analogWrite(DAC_PIN_I, valeurs_I[symbole]);
@@ -23,6 +25,7 @@ void loop() {
     
     // Durée pour visualiser chaque symbole sur l'oscilloscope
     delay(100); // Ajustez le délai pour la durée de visualisation souhaitée
+   
   }
   delay(500); // Pause avant de recommencer la séquence
 }
