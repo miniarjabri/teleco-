@@ -11,6 +11,7 @@ const uint16_t valeurs_Q[16] = {2358, 2854, 3350, 3847, 2358, 2854, 3350, 3847,
                                 2358, 2854, 3350, 3847, 2358, 2854, 3350, 3847}; // Valeurs en DAC pour Q
 
 void setup() {
+  analogWriteResolution(12);
   // Configuration des broches DAC comme sorties
   pinMode(DAC_PIN_I, OUTPUT);
   pinMode(DAC_PIN_Q, OUTPUT);
