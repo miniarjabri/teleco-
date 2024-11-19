@@ -15,8 +15,7 @@ void setup() {
   // Configurer la résolution du DAC à 12 bits
   analogWriteResolution(12);
  
-  // Message d'introduction
-  Serial.println("Entrez un mot de 8 bits (ex: 11001101) : ");
+
 }
 
 
