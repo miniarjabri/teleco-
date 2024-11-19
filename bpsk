@@ -1,0 +1,34 @@
+#include <Arduino.h>
+
+const String binarySequence = "010010111";
+
+#define DAC_PIN A2
+
+const int dacValue0 = 2358; // Correspond à 1.9V (sur 12 bits et 3.3V max)
+const int dacValue1 = 3847; // Correspond à 3.1V (sur 12 bits et 3.3V max)
+
+const int delayBetweenBits = 500;
+
+void setup() {
+  Serial.begin(9600);
+  analogWriteResolution(12);
+}
+
+void loop() {
+  for (int i = 0; i < binarySequence.length(); i++) {
+    char bit = binarySequence[i];
+
+    if (bit == '0') {
+      analogWrite(DAC_PIN, dacValue0);
+      
+    } else if (bit == '1') {
+      analogWrite(DAC_PIN, dacValue1);
+   
+    }
+    
+
+    delay(delayBetweenBits);
+  }
+
+  delay(2000); // Pause avant de redémarrer le traitement
+}
